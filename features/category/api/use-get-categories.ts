@@ -1,17 +1,21 @@
-import { auth } from "@clerk/nextjs/server";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { Category } from "../types/Category";
+import { useAuth } from "@clerk/nextjs";
 
-export const getCategories = async () => {
-  const { getToken } = auth();
-  const token = await getToken();
-  if (!token) {
-    throw new Error("認証トークンの取得に失敗しました");
-  }
+/**
+ * カテゴリーの一覧を取得するカスタムフック
+ * @returns カテゴリーの一覧を取得するクエリ結果
+ */
+export const useGetCategories = (): UseQueryResult<Category[], Error> => {
+  const { getToken } = useAuth();
 
   return useQuery<Category[], Error>({
     queryKey: ["categories"],
     queryFn: async () => {
+      const token = await getToken();
+      if (!token) {
+        throw new Error("認証トークンの取得に失敗しました");
+      }
       const response = await fetchCategories(token);
       return response;
     },
