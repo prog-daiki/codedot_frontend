@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { CopyRight } from "./copy-right";
+import { FooterLinks } from "./footer-links";
 
 const footerLinks = [
   { href: "/terms", text: "利用規約" },
@@ -11,13 +11,7 @@ export const Footer = () => {
     <footer className="w-full border-t py-4 px-6 h-20">
       <div className="w-full max-w-[1400px] mx-auto flex items-center h-full justify-between">
         <CopyRight />
-        <div className="flex items-center gap-x-4">
-          {footerLinks.map(({ href, text }) => (
-            <Link className="transition hover:underline" href={href} key={href}>
-              {text}
-            </Link>
-          ))}
-        </div>
+        <FooterLinks />
       </div>
     </footer>
   );
