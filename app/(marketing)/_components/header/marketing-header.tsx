@@ -1,5 +1,5 @@
-import { HeaderLogo } from "@/app/_components/header-logo";
-import { LoginButton } from "./login-button";
+import { HeaderLogo } from "@/app/_components/header/header-logo";
+import { LoginButton } from "../../../_components/header/login-button";
 
 export const MarketingHeader = () => {
   return (

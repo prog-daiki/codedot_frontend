@@ -5,6 +5,7 @@ import { Inter, Noto_Sans_JP } from "next/font/google";
 import type { Metadata } from "next";
 
 import "./globals.css";
+import { QueryProvider } from "@/providers/query-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,7 +33,7 @@ export default function RootLayout({
     <ClerkProvider localization={jaJP}>
       <html lang="ja" className={`${notoSansJP.variable} font-sans`}>
         <body className={`${inter.variable} ${notoSansJP.variable}`}>
-          {children}
+          <QueryProvider>{children}</QueryProvider>
         </body>
       </html>
     </ClerkProvider>
