@@ -4,7 +4,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export const HeaderNav = () => {
+interface HeaderNavProps {
+  isAdmin: boolean;
+}
+
+export const HeaderNav = ({ isAdmin }: HeaderNavProps) => {
   const pathname = usePathname();
   const isActive = (path: string) => pathname === path;
 
@@ -26,6 +30,11 @@ export const HeaderNav = () => {
           Dashboard
         </Button>
       </Link>
+      {isAdmin && (
+        <Link href="/admin/courses">
+          <Button variant="ghost">Admin mode</Button>
+        </Link>
+      )}
     </nav>
   );
 };
