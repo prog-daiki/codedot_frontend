@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
-import { Footer } from "../_components/footer";
-import { MarketingHeader } from "./_components/marketing-header";
+import { Footer } from "../_components/footer/footer";
+import { MarketingHeader } from "./_components/header/marketing-header";
 import { redirect } from "next/navigation";
 
 type MarketingLayoutProps = {
