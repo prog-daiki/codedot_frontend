@@ -1,15 +1,15 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { Course } from "../types/course";
 import { useAuth } from "@clerk/nextjs";
+import { AdminCourse } from "../types/admin-course";
 
 /**
  * 講座の一覧を取得するカスタムフック
  * @returns 講座の一覧を取得するクエリ結果
  */
-export const useGetCourses = (): UseQueryResult<Course[], Error> => {
+export const useGetCourses = (): UseQueryResult<AdminCourse[], Error> => {
   const { getToken } = useAuth();
 
-  return useQuery<Course[], Error>({
+  return useQuery<AdminCourse[], Error>({
     queryKey: ["courses"],
     queryFn: async () => {
       const token = await getToken();
@@ -28,7 +28,7 @@ export const useGetCourses = (): UseQueryResult<Course[], Error> => {
  * @returns 講座の一覧
  * @throws Error 講座取得に失敗した場合
  */
-async function fetchCourses(token: string): Promise<Course[]> {
+async function fetchCourses(token: string): Promise<AdminCourse[]> {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/courses`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -39,6 +39,6 @@ async function fetchCourses(token: string): Promise<Course[]> {
     throw new Error(`講座の一覧取得に失敗しました: ${response.statusText}`);
   }
 
-  const data: Course[] = await response.json();
+  const data: AdminCourse[] = await response.json();
   return data;
 }
