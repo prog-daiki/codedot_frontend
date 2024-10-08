@@ -18,7 +18,7 @@ const CategoriesSkeleton = () => (
   </div>
 );
 
-export const Categories = () => {
+export const CategoryList = () => {
   const { data: categories = [], isLoading, isError } = useGetCategories();
 
   if (isLoading) {
