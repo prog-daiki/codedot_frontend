@@ -1,16 +1,16 @@
-// import { CourseList } from "@/features/course/components/course-list";
+import { CourseList } from "@/features/course/components/course-list";
 
-type CourseListProps = {
+interface CourseListProps {
   searchParams: {
     title: string;
     categoryId: string;
   };
-};
+}
 
 const CoursesPage = ({ searchParams }: CourseListProps) => {
   return (
     <div className="mt-4">
-      {/* <CourseList searchParams={searchParams} /> */}
+      <CourseList searchParams={searchParams} />
     </div>
   );
 };
