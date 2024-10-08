@@ -1,5 +1,5 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { Course } from "../types/Course";
+import { Course } from "../types/course";
 import { useAuth } from "@clerk/nextjs";
 
 /**
