@@ -4,13 +4,9 @@ import { useGetCategories } from "../api/use-get-categories";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CategoryItem } from "./category-item";
 
-// スケルトンの数を定数として定義
 const SKELETON_COUNT = 10;
 
-/**
- * カテゴリーのローディング状態を表示するスケルトンコンポーネント
- */
-const CategoriesSkeleton: React.FC = () => (
+const CategoriesSkeleton = () => (
   <div
     className="flex items-center space-x-2 overflow-x-auto pb-2"
     role="status"
@@ -22,10 +18,7 @@ const CategoriesSkeleton: React.FC = () => (
   </div>
 );
 
-/**
- * カテゴリー一覧を表示するコンポーネント
- */
-export const Categories: React.FC = () => {
+export const Categories = () => {
   const { data: categories = [], isLoading, isError } = useGetCategories();
 
   if (isLoading) {

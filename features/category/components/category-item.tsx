@@ -5,23 +5,12 @@ import qs from "query-string";
 import { cn } from "@/lib/utils";
 import { useCallback, useMemo } from "react";
 
-/**
- * カテゴリーアイテムのプロパティ
- * @typedef {Object} CategoryItemProps
- * @property {string} label - カテゴリーの表示名
- * @property {string} value - カテゴリーの一意の識別子
- */
-type CategoryItemProps = {
+interface CategoryItemProps {
   label: string;
   value: string;
-};
+}
 
-/**
- * カテゴリーアイテムコンポーネント
- * @param {CategoryItemProps} props
- * @returns {JSX.Element}
- */
-export const CategoryItem: React.FC<CategoryItemProps> = ({ label, value }) => {
+export const CategoryItem = ({ label, value }: CategoryItemProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -54,7 +43,7 @@ export const CategoryItem: React.FC<CategoryItemProps> = ({ label, value }) => {
       className={cn(
         "py-2 px-3 text-sm border border-slate-200 rounded-md flex items-center gap-x-1 hover:border-sky-700 transition",
         {
-          "border-sky-700 bg-gray-100": isSelected,
+          "border-sky-700 bg-sky-100 text-sky-700": isSelected,
         },
       )}
       onClick={handleClick}

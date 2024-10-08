@@ -1,5 +1,5 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { Category } from "../types/Category";
+import { Category } from "../types/category";
 import { useAuth } from "@clerk/nextjs";
 
 /**
