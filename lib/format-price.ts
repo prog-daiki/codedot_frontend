@@ -1,13 +1,23 @@
 /**
- * 金額を日本円形式でフォーマットする
- * @param price フォーマットする金額（数値）
+ * 金額を指定された通貨でフォーマットする
+ * @param amount フォーマットする金額（数値）
  * @returns フォーマットされた金額（文字列）
+ * @throws {Error} 無効な入力の場合
  */
-export const formatPrice = (price: number): string => {
-  const formatter = new Intl.NumberFormat("ja-JP", {
-    style: "currency",
-    currency: "JPY",
-  });
+export const formatPrice = (amount: number): string => {
+  if (!Number.isFinite(amount)) {
+    throw new Error("無効な金額です");
+  }
 
-  return formatter.format(price);
+  try {
+    const formatter = new Intl.NumberFormat("ja-JP", {
+      style: "currency",
+      currency: "JPY",
+    });
+
+    return formatter.format(amount);
+  } catch (error) {
+    console.error("金額のフォーマット中にエラーが発生しました:", error);
+    throw new Error("金額のフォーマットに失敗しました");
+  }
 };

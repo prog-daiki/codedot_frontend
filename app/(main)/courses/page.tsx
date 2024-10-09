@@ -9,7 +9,7 @@ interface CourseListProps {
 
 const CoursesPage = ({ searchParams }: CourseListProps) => {
   return (
-    <div className="mt-4">
+    <div>
       <CourseList searchParams={searchParams} />
     </div>
   );
