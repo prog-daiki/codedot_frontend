@@ -1,11 +1,15 @@
 "use client";
 
 import { IconBadge } from "@/app/_components/common/icon-badge";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { useGetCourse } from "@/features/course/api/use-get-course";
 import { CourseDescriptionForm } from "@/features/course/components/form/course-description-form";
 import { CourseTitleForm } from "@/features/course/components/form/course-title-form";
-import { LayoutDashboard, ListChecks, Loader2 } from "lucide-react";
+import { ArrowLeft, LayoutDashboard, ListChecks, Loader2 } from "lucide-react";
 import { redirect } from "next/navigation";
+import { Banner } from "@/app/_components/common/banner";
+import { CourseImageForm } from "@/features/course/components/form/course-image-form";
 
 const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
   const { courseId } = params;
@@ -26,7 +30,13 @@ const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
   return (
     <>
       <div className="space-y-4">
-        {/* {!course.publishFlag && <Banner label="この講座は非公開です" />} */}
+        <Link href="/admin/courses">
+          <Button variant="ghost">
+            <ArrowLeft className="size-4 mr-2" />
+            講座管理画面に戻る
+          </Button>
+        </Link>
+        {!course.publishFlag && <Banner label="この講座は非公開です" />}
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-y-2">
             <h1 className="text-2xl font-bold">講座設定</h1>
@@ -53,6 +63,10 @@ const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
             <CourseDescriptionForm
               courseId={courseId}
               defaultValues={{ description: course.description ?? "" }}
+            />
+            <CourseImageForm
+              courseId={courseId}
+              defaultValues={{ imageUrl: course.imageUrl ?? "" }}
             />
             {/* <ImageForm courseId={params.courseId} initialData={course} /> */}
             {/* <CategoryForm
