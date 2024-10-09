@@ -1,7 +1,7 @@
 "use client";
 
 import { Skeleton } from "@/components/ui/skeleton";
-import { useGetPublishCourses } from "../api/use get-publish-courses";
+import { useGetPublishCourses } from "../api/use-get-publish-courses";
 import { CourseCard } from "./course-card";
 
 interface CourseListProps {
