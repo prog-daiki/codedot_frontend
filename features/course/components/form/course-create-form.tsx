@@ -22,14 +22,12 @@ const formSchema = z.object({
 type FormValues = z.input<typeof formSchema>;
 
 interface CourseTitleFormProps {
-  id?: string;
   defaultValues?: FormValues;
   onSubmit: (values: FormValues) => void;
   disabled?: boolean;
 }
 
-export const CourseTitleForm = ({
-  id,
+export const CourseCreateForm = ({
   defaultValues,
   onSubmit,
   disabled,
@@ -66,7 +64,7 @@ export const CourseTitleForm = ({
           )}
         />
         <Button className="w-full" disabled={disabled}>
-          {id ? "変更を保存" : "講座を作成"}
+          講座を作成
         </Button>
       </form>
     </Form>

@@ -6,9 +6,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { PlusCircle } from "lucide-react";
-import { CourseTitleForm } from "./form/course-title-form";
 import { useCreateCourse } from "../api/use-create-course";
 import { z } from "zod";
+import { CourseCreateForm } from "./form/course-create-form";
 
 const formSchema = z.object({
   title: z
@@ -37,7 +37,7 @@ export const CreateCourse = () => {
             新しい講座を作成しよう
           </DialogTitle>
         </DialogHeader>
-        <CourseTitleForm
+        <CourseCreateForm
           onSubmit={onSubmit}
           disabled={mutation.isPending}
           defaultValues={{ title: "" }}
