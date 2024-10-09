@@ -7,6 +7,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -60,11 +61,12 @@ export const CourseTitleForm = ({
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
         <Button className="w-full" disabled={disabled}>
-          {id ? "保存" : "講座を作成"}
+          {id ? "変更を保存" : "講座を作成"}
         </Button>
       </form>
     </Form>
