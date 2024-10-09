@@ -8,20 +8,19 @@ import { useCallback, useMemo } from "react";
 interface CategoryItemProps {
   label: string;
   value: string;
+  isSelected: boolean;
 }
 
-export const CategoryItem = ({ label, value }: CategoryItemProps) => {
+export const CategoryItem = ({
+  label,
+  value,
+  isSelected,
+}: CategoryItemProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const currentCategoryId = searchParams.get("categoryId");
   const currentTitle = searchParams.get("title");
-
-  const isSelected = useMemo(
-    () => currentCategoryId === value,
-    [currentCategoryId, value],
-  );
 
   const handleClick = useCallback(() => {
     const url = qs.stringifyUrl(

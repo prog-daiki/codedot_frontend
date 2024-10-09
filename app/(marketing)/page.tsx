@@ -1,3 +1,3 @@
 export default function MarketingPage() {
-  return <div>hello</div>;
+  return <div>製作中...</div>;
 }

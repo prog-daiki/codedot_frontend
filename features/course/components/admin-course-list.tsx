@@ -1,23 +1,13 @@
 "use client";
 
 import { Skeleton } from "@/components/ui/skeleton";
-import { useGetPublishCourses } from "../api/use get-publish-courses";
-import { CourseCard } from "./course-card";
-
-interface CourseListProps {
-  searchParams: {
-    title: string;
-    categoryId: string;
-  };
-}
+import { useGetCourses } from "../api/use-get-courses";
+import { AdminCourseCard } from "./admin-course-card";
 
 const SKELETON_COUNT = 8;
 
-export const CourseList = ({ searchParams }: CourseListProps) => {
-  const coursesQuery = useGetPublishCourses({
-    title: searchParams.title,
-    categoryId: searchParams.categoryId,
-  });
+export const AdminCourseList = () => {
+  const coursesQuery = useGetCourses();
   const courses = coursesQuery.data || [];
 
   if (coursesQuery.isLoading) {
@@ -34,15 +24,16 @@ export const CourseList = ({ searchParams }: CourseListProps) => {
     <div>
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
         {courses.map((course) => (
-          <CourseCard
-            category={course.category!.name}
+          <AdminCourseCard
+            category={course.category?.name ?? "未分類"}
             chaptersLength={course.chapters.length}
             id={course.course.id}
-            imageUrl={course.course.imageUrl!}
+            imageUrl={course.course.imageUrl ?? "/images/no-image.png"}
             key={course.course.id}
-            price={course.course.price!}
+            price={course.course.price ?? 0}
             title={course.course.title}
-            purchased={course.purchased}
+            purchasedNumber={course.purchasedNumber}
+            publishFlag={course.course.publishFlag}
           />
         ))}
       </div>
