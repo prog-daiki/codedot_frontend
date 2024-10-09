@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { QueryProvider } from "@/providers/query-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,7 +34,10 @@ export default function RootLayout({
     <ClerkProvider localization={jaJP}>
       <html lang="ja" className={`${notoSansJP.variable} font-sans`}>
         <body className={`${inter.variable} ${notoSansJP.variable}`}>
-          <QueryProvider>{children}</QueryProvider>
+          <QueryProvider>
+            <Toaster />
+            {children}
+          </QueryProvider>
         </body>
       </html>
     </ClerkProvider>
