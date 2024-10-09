@@ -3,7 +3,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 import { cn } from "@/lib/utils";
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 
 interface CategoryItemProps {
   label: string;
