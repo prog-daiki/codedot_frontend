@@ -2,6 +2,7 @@
 
 import { IconBadge } from "@/app/_components/common/icon-badge";
 import { useGetCourse } from "@/features/course/api/use-get-course";
+import { CourseTitleForm } from "@/features/course/components/form/course-title-form";
 import { LayoutDashboard, ListChecks, Loader2 } from "lucide-react";
 import { redirect } from "next/navigation";
 
@@ -39,12 +40,15 @@ const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
           /> */}
         </div>
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div>
+          <div className="space-y-4">
             <div className="flex items-center gap-x-2">
               <IconBadge icon={LayoutDashboard} />
               <h2 className="text-xl font-semibold">講座のカスタマイズ</h2>
             </div>
-            {/* <TitleForm courseId={params.courseId} initialData={course} /> */}
+            <CourseTitleForm
+              courseId={courseId}
+              defaultValues={{ title: course.title }}
+            />
             {/* <DescriptionForm courseId={params.courseId} initialData={course} /> */}
             {/* <ImageForm courseId={params.courseId} initialData={course} /> */}
             {/* <CategoryForm
