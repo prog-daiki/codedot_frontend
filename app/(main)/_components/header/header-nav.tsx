@@ -22,7 +22,7 @@ export const HeaderNav = ({ isAdmin }: HeaderNavProps) => {
   const navItems: NavItem[] = [
     { href: "/courses", label: "Courses" },
     { href: "/dashboard", label: "Dashboard" },
-    { href: "/admin/courses", label: "Admin mode", adminOnly: true },
+    { href: "/admin", label: "Admin mode", adminOnly: true },
   ];
 
   return (

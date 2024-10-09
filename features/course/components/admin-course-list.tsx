@@ -6,7 +6,11 @@ import { AdminCourseCard } from "./admin-course-card";
 
 const SKELETON_COUNT = 8;
 
-export const AdminCourseList = () => {
+interface AdminCourseListProps {
+  max_courses?: number;
+}
+
+export const AdminCourseList = ({ max_courses }: AdminCourseListProps) => {
   const coursesQuery = useGetCourses();
   const courses = coursesQuery.data || [];
 
@@ -20,10 +24,14 @@ export const AdminCourseList = () => {
     );
   }
 
+  const displayedCourses = max_courses
+    ? courses.slice(0, max_courses)
+    : courses;
+
   return (
     <div>
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
-        {courses.map((course) => (
+        {displayedCourses.map((course) => (
           <AdminCourseCard
             category={course.category?.name ?? "未分類"}
             chaptersLength={course.chapters.length}
