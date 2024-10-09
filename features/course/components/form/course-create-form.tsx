@@ -21,7 +21,7 @@ const formSchema = z.object({
 
 type FormValues = z.input<typeof formSchema>;
 
-interface CourseTitleFormProps {
+interface CourseCreateFormProps {
   defaultValues?: FormValues;
   onSubmit: (values: FormValues) => void;
   disabled?: boolean;
@@ -31,14 +31,13 @@ export const CourseCreateForm = ({
   defaultValues,
   onSubmit,
   disabled,
-}: CourseTitleFormProps) => {
+}: CourseCreateFormProps) => {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues,
   });
 
   const handleSubmit = (values: FormValues) => {
-    console.log(values);
     onSubmit(values);
   };
 
