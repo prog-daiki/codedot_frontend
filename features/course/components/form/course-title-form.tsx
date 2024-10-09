@@ -55,7 +55,7 @@ export const CourseTitleForm = ({
   return (
     <div className="rounded-md border p-4 shadow-md space-y-2">
       <div className="flex items-center justify-between font-medium">
-        <h3 className="border-b border-sky-500">タイトル</h3>
+        <h3 className="border-b border-sky-500 font-semibold">タイトル</h3>
         <Button className="px-4" onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>取り消す</>
