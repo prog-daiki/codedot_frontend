@@ -1,7 +1,6 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -10,7 +9,6 @@ import { PlusCircle } from "lucide-react";
 import { CourseTitleForm } from "./form/course-title-form";
 import { useCreateCourse } from "../api/use-create-course";
 import { z } from "zod";
-import { toast } from "sonner";
 
 const formSchema = z.object({
   title: z
@@ -38,7 +36,6 @@ export const CreateCourse = () => {
           <DialogTitle className="font-normal text-gray-500">
             新しい講座を作成しよう
           </DialogTitle>
-          <DialogDescription>講座の名前は後で変更が可能です</DialogDescription>
         </DialogHeader>
         <CourseTitleForm
           onSubmit={onSubmit}
