@@ -2,6 +2,7 @@
 
 import { IconBadge } from "@/app/_components/common/icon-badge";
 import { useGetCourse } from "@/features/course/api/use-get-course";
+import { CourseDescriptionForm } from "@/features/course/components/form/course-description-form";
 import { CourseTitleForm } from "@/features/course/components/form/course-title-form";
 import { LayoutDashboard, ListChecks, Loader2 } from "lucide-react";
 import { redirect } from "next/navigation";
@@ -49,7 +50,10 @@ const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
               courseId={courseId}
               defaultValues={{ title: course.title }}
             />
-            {/* <DescriptionForm courseId={params.courseId} initialData={course} /> */}
+            <CourseDescriptionForm
+              courseId={courseId}
+              defaultValues={{ description: course.description ?? "" }}
+            />
             {/* <ImageForm courseId={params.courseId} initialData={course} /> */}
             {/* <CategoryForm
               courseId={params.courseId}
