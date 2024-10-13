@@ -9,6 +9,7 @@ import { PlusCircle } from "lucide-react";
 import { useCreateCourse } from "../api/use-create-course";
 import { z } from "zod";
 import { CourseCreateForm } from "./form/course-create-form";
+import { useState } from "react";
 
 const formSchema = z.object({
   title: z
@@ -20,13 +21,15 @@ const formSchema = z.object({
 type FormValues = z.input<typeof formSchema>;
 
 export const CreateCourse = () => {
+  const [open, setOpen] = useState(false);
   const mutation = useCreateCourse();
   const onSubmit = (values: FormValues) => {
     mutation.mutate(values);
+    setOpen(false);
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger className="flex items-center rounded-md bg-sky-700 px-4 py-2 text-white transition hover:bg-sky-900">
         <PlusCircle className="mr-2 size-4" />
         講座を作成
