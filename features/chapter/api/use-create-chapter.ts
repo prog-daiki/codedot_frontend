@@ -6,7 +6,7 @@ import { Chapter } from "../types/chapter";
 type RequestType = Pick<Chapter, "title">;
 type ResponseType = Chapter;
 
-export const useCreateChapter = () => {
+export const useCreateChapter = (courseId: string) => {
   const queryClient = useQueryClient();
   const { getToken } = useAuth();
   const mutation = useMutation<ResponseType, Error, RequestType>({
@@ -16,7 +16,7 @@ export const useCreateChapter = () => {
         throw new Error("認証トークンの取得に失敗しました");
       }
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/chapters`,
+        `${process.env.NEXT_PUBLIC_API_URL}/courses/${courseId}/chapters`,
         {
           method: "POST",
           body: JSON.stringify(json),
