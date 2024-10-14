@@ -20,20 +20,12 @@ const CategoriesSkeleton = () => (
 );
 
 export const CategoryList = () => {
-  const { data: categories = [], isLoading, isError } = useGetCategories();
+  const { data: categories = [], isLoading } = useGetCategories();
   const searchParams = useSearchParams();
   const currentCategoryId = searchParams.get("categoryId");
 
   if (isLoading) {
     return <CategoriesSkeleton />;
-  }
-
-  if (isError) {
-    return (
-      <div className="text-red-500" role="alert">
-        カテゴリーの読み込み中にエラーが発生しました。
-      </div>
-    );
   }
 
   return (
