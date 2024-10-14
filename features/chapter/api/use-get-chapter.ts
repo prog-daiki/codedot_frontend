@@ -1,14 +1,14 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { Chapter } from "../types/chapter";
+import { ChapterWithMuxData } from "../types/chapter-with-muxdata";
 import { useAuth } from "@clerk/nextjs";
 
 export const useGetChapter = (
   courseId: string,
   chapterId: string,
-): UseQueryResult<Chapter, Error> => {
+): UseQueryResult<ChapterWithMuxData, Error> => {
   const { getToken } = useAuth();
 
-  return useQuery<Chapter, Error>({
+  return useQuery<ChapterWithMuxData, Error>({
     queryKey: ["chapter", courseId, chapterId],
     queryFn: async () => {
       const token = await getToken();
@@ -30,7 +30,7 @@ export const useGetChapter = (
         );
       }
 
-      const data: Chapter = await response.json();
+      const data: ChapterWithMuxData = await response.json();
       return data;
     },
   });
