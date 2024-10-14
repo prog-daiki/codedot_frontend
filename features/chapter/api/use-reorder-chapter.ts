@@ -28,11 +28,10 @@ export const useReorderChapter = (courseId: string) => {
       );
       return await response.json();
     },
-    onSuccess: (updatedCourse) => {
+    onSuccess: (updatedChapters) => {
       toast.success("チャプターの順番を更新しました");
-      queryClient.invalidateQueries({ queryKey: ["chapters"] });
-      queryClient.invalidateQueries({ queryKey: ["chapters"] });
-      queryClient.setQueryData(["chapters"], updatedCourse);
+      queryClient.invalidateQueries({ queryKey: ["chapters", courseId] });
+      queryClient.setQueryData(["chapters", courseId], updatedChapters);
     },
     onError: (error) => {
       toast.error("チャプターの順番の更新に失敗しました");
