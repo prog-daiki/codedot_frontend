@@ -1,15 +1,15 @@
 import { SearchInput } from "@/app/_components/common/search-input";
-import { CategoryList } from "@/features/category/components/category-list";
+import { CategoryList } from "@/features/category/components/client/category-list";
 import { CourseList } from "@/features/course/components/client/course-list";
 
-interface CourseListProps {
+interface CoursesPageProps {
   searchParams: {
     title: string;
     categoryId: string;
   };
 }
 
-const CoursesPage = ({ searchParams }: CourseListProps) => {
+const CoursesPage = ({ searchParams }: CoursesPageProps) => {
   return (
     <div className="mt-4">
       <CategoryList />
