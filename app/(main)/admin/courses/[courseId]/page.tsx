@@ -10,14 +10,21 @@ import { ArrowLeft, LayoutDashboard, ListChecks, Loader2 } from "lucide-react";
 import { redirect } from "next/navigation";
 import { Banner } from "@/app/_components/common/banner";
 import { CourseImageForm } from "@/features/course/components/form/course-image-form";
+import { CourseCategoryForm } from "@/features/course/components/form/course-category-form";
+import { CoursePriceForm } from "@/features/course/components/form/course-price-form";
+import { CourseSourceUrlForm } from "@/features/course/components/form/course-source-url-form";
+import { ChapterForm } from "@/features/chapter/components/form/chapter-form";
+import { Actions } from "@/features/course/components/actions";
+import { useGetChapters } from "@/features/chapter/api/use-get-chapters";
 
 const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
   const { courseId } = params;
   const { data: course, isLoading, isError } = useGetCourse(courseId);
+  const { data: chapters = [] } = useGetChapters(courseId);
 
   if (isLoading) {
     return (
-      <div className="w-full h-full flex items-center justify-center">
+      <div className="w-full min-h-screen flex items-center justify-center bg-white pb-60">
         <Loader2 className="size-12 animate-spin" />
       </div>
     );
@@ -26,6 +33,22 @@ const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
   if (!course) {
     return redirect("/admin/courses");
   }
+
+  const publishedChapters = chapters.filter((chapter) => chapter.publishFlag);
+
+  const requiredFields = [
+    course.title,
+    course.description,
+    course.imageUrl,
+    course.price,
+    course.categoryId,
+    course.sourceUrl,
+    publishedChapters.length,
+  ];
+  const totalFields = requiredFields.length;
+  const completedFields = requiredFields.filter(Boolean).length;
+  const completionText = `${completedFields}/${totalFields}`;
+  const isComplete = requiredFields.every(Boolean);
 
   return (
     <>
@@ -41,14 +64,14 @@ const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
           <div className="flex flex-col gap-y-2">
             <h1 className="text-2xl font-bold">講座設定</h1>
             <span className="text-sm text-slate-700">
-              {/* 入力済みの必須項目 {completionText} */}
+              入力済みの必須項目 {completionText}
             </span>
           </div>
-          {/* <Actions
-            courseId={params.courseId}
+          <Actions
+            courseId={courseId}
             disabled={!isComplete}
             isPublished={course.publishFlag!}
-          /> */}
+          />
         </div>
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="space-y-4">
@@ -68,17 +91,18 @@ const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
               courseId={courseId}
               defaultValues={{ imageUrl: course.imageUrl ?? "" }}
             />
-            {/* <ImageForm courseId={params.courseId} initialData={course} /> */}
-            {/* <CategoryForm
-              courseId={params.courseId}
-              initialData={course}
-              options={categories.map((category) => ({
-                label: category.name,
-                value: category.id,
-              }))}
-            /> */}
-            {/* <PriceForm courseId={course.id} initialData={course} /> */}
-            {/* <SourceUrlForm courseId={course.id} initialData={course} /> */}
+            <CourseCategoryForm
+              courseId={courseId}
+              defaultValues={{ categoryId: course.categoryId ?? "" }}
+            />
+            <CoursePriceForm
+              courseId={courseId}
+              defaultValues={{ price: course.price ?? 0 }}
+            />
+            <CourseSourceUrlForm
+              courseId={courseId}
+              defaultValues={{ sourceUrl: course.sourceUrl ?? "" }}
+            />
           </div>
           <div className="space-y-6">
             <div>
@@ -86,7 +110,7 @@ const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
                 <IconBadge icon={ListChecks} />
                 <h2 className="text-xl font-semibold">チャプター</h2>
               </div>
-              {/* <ChaptersForm courseId={course.id} initialData={chapters} /> */}
+              <ChapterForm courseId={course.id} />
             </div>
           </div>
         </div>
