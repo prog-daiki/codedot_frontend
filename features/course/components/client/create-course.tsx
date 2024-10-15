@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -6,9 +8,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { PlusCircle } from "lucide-react";
-import { useCreateCourse } from "../api/use-create-course";
+import { useCreateCourse } from "../../api/use-create-course";
 import { z } from "zod";
-import { CourseCreateForm } from "./form/course-create-form";
+import { CourseCreateForm } from "./course-create-form";
 import { useState } from "react";
 
 const formSchema = z.object({

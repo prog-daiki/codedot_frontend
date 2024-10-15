@@ -4,17 +4,17 @@ import { IconBadge } from "@/app/_components/common/icon-badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useGetCourse } from "@/features/course/api/use-get-course";
-import { CourseDescriptionForm } from "@/features/course/components/form/course-description-form";
-import { CourseTitleForm } from "@/features/course/components/form/course-title-form";
+import { CourseDescriptionForm } from "@/features/course/components/client/course-description-form";
+import { CourseTitleForm } from "@/features/course/components/client/course-title-form";
 import { ArrowLeft, LayoutDashboard, ListChecks, Loader2 } from "lucide-react";
 import { redirect } from "next/navigation";
 import { Banner } from "@/app/_components/common/banner";
-import { CourseImageForm } from "@/features/course/components/form/course-image-form";
-import { CourseCategoryForm } from "@/features/course/components/form/course-category-form";
-import { CoursePriceForm } from "@/features/course/components/form/course-price-form";
-import { CourseSourceUrlForm } from "@/features/course/components/form/course-source-url-form";
-import { ChapterForm } from "@/features/chapter/components/form/chapter-form";
-import { Actions } from "@/features/course/components/actions";
+import { CourseImageForm } from "@/features/course/components/client/course-image-form";
+import { CourseCategoryForm } from "@/features/course/components/client/course-category-form";
+import { CoursePriceForm } from "@/features/course/components/client/course-price-form";
+import { CourseSourceUrlForm } from "@/features/course/components/client/course-source-url-form";
+import { ChapterForm } from "@/features/chapter/components/client/chapter-form";
+import { Actions } from "@/features/course/components/client/course-actions";
 import { useGetChapters } from "@/features/chapter/api/use-get-chapters";
 
 const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {

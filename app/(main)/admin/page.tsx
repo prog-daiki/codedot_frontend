@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { AdminCourseList } from "@/features/course/components/admin-course-list";
+import { AdminCourseList } from "@/features/course/components/client/admin-course-list";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 

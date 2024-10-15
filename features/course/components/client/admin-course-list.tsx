@@ -1,7 +1,7 @@
 "use client";
 
 import { Skeleton } from "@/components/ui/skeleton";
-import { useGetCourses } from "../api/use-get-courses";
+import { useGetCourses } from "../../api/use-get-courses";
 import { AdminCourseCard } from "./admin-course-card";
 
 const SKELETON_COUNT = 8;

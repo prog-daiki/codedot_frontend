@@ -6,28 +6,22 @@ import { useConfettiStore } from "@/hooks/use-confetti-store";
 import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
 import { ConfirmModal } from "@/app/_components/common/confirm-modal";
-import { useDeleteChapter } from "../api/use-delete-chapter";
-import { useUpdateChapterPublish } from "../api/use-update-chapter-publish";
-import { useUpdateChapterUnPublish } from "../api/use-update-chapter-unpublish";
+import { useDeleteCourse } from "../../api/use-delete-course";
+import { useUpdateCoursePublish } from "../../api/use-update-course-unpublish";
+import { useUpdateCourseUnpublish } from "../../api/use-update-course-publish";
 
-interface ChapterActionsProps {
+interface ActionsProps {
   courseId: string;
-  chapterId: string;
   disabled: boolean;
   isPublished: boolean;
 }
 
-export const ChapterActions = ({
-  courseId,
-  chapterId,
-  disabled,
-  isPublished,
-}: ChapterActionsProps) => {
+export const Actions = ({ courseId, disabled, isPublished }: ActionsProps) => {
   const router = useRouter();
   const confetti = useConfettiStore();
-  const deleteMutation = useDeleteChapter(courseId, chapterId);
-  const publishMutation = useUpdateChapterPublish(courseId, chapterId);
-  const unpublishMutation = useUpdateChapterUnPublish(courseId, chapterId);
+  const deleteMutation = useDeleteCourse(courseId);
+  const publishMutation = useUpdateCoursePublish(courseId);
+  const unpublishMutation = useUpdateCourseUnpublish(courseId);
 
   const handlePublish = () => {
     if (isPublished) {
@@ -40,7 +34,7 @@ export const ChapterActions = ({
 
   const handleDelete = () => {
     deleteMutation.mutate();
-    router.push(`/admin/courses/${courseId}`);
+    router.push("/admin/courses");
   };
 
   return (
