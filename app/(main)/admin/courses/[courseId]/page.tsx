@@ -14,7 +14,7 @@ import { CourseCategoryForm } from "@/features/course/components/form/course-cat
 import { CoursePriceForm } from "@/features/course/components/form/course-price-form";
 import { CourseSourceUrlForm } from "@/features/course/components/form/course-source-url-form";
 import { ChapterForm } from "@/features/chapter/components/client/chapter-form";
-import { Actions } from "@/features/course/components/actions";
+import { Actions } from "@/features/course/components/client/course-actions";
 import { useGetChapters } from "@/features/chapter/api/use-get-chapters";
 
 const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
