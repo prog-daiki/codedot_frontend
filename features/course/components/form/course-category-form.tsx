@@ -1,3 +1,5 @@
+"use client";
+
 import { z } from "zod";
 import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
