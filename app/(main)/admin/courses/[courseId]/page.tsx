@@ -13,7 +13,7 @@ import { CourseImageForm } from "@/features/course/components/form/course-image-
 import { CourseCategoryForm } from "@/features/course/components/form/course-category-form";
 import { CoursePriceForm } from "@/features/course/components/form/course-price-form";
 import { CourseSourceUrlForm } from "@/features/course/components/form/course-source-url-form";
-import { ChapterForm } from "@/features/chapter/components/form/chapter-form";
+import { ChapterForm } from "@/features/chapter/components/client/chapter-form";
 import { Actions } from "@/features/course/components/actions";
 import { useGetChapters } from "@/features/chapter/api/use-get-chapters";
 

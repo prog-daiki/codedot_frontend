@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useGetChapters } from "../../api/use-get-chapters";
-import { ChapterList } from "../chapter-list";
+import { ChapterList } from "./chapter-list";
 import { useReorderChapter } from "../../api/use-reorder-chapter";
 import { Loader2, PlusCircle } from "lucide-react";
 import { useState } from "react";

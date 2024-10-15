@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Chapter } from "../types/chapter";
+import { Chapter } from "@/features/chapter/types/chapter";
 import {
   DragDropContext,
   Droppable,

@@ -6,9 +6,9 @@ import { useConfettiStore } from "@/hooks/use-confetti-store";
 import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
 import { ConfirmModal } from "@/app/_components/common/confirm-modal";
-import { useDeleteChapter } from "../api/use-delete-chapter";
-import { useUpdateChapterPublish } from "../api/use-update-chapter-publish";
-import { useUpdateChapterUnPublish } from "../api/use-update-chapter-unpublish";
+import { useDeleteChapter } from "../../api/use-delete-chapter";
+import { useUpdateChapterPublish } from "../../api/use-update-chapter-publish";
+import { useUpdateChapterUnPublish } from "../../api/use-update-chapter-unpublish";
 
 interface ChapterActionsProps {
   courseId: string;
