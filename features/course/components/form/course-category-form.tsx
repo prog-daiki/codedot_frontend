@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { useUpdateCourseDescription } from "../../api/use-update-course-description";
 import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
@@ -13,7 +12,6 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea";
 import { useUpdateCourseCategory } from "../../api/use-update-course-category";
 import { cn } from "@/lib/utils";
 import { useGetCategories } from "@/features/category/api/use-get-categories";
