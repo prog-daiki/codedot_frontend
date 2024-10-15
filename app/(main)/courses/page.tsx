@@ -1,6 +1,6 @@
 import { SearchInput } from "@/app/_components/common/search-input";
 import { CategoryList } from "@/features/category/components/category-list";
-import { CourseList } from "@/features/course/components/course-list";
+import { CourseList } from "@/features/course/components/client/course-list";
 
 interface CourseListProps {
   searchParams: {

@@ -1,3 +1,5 @@
+"use client";
+
 import { formatPrice } from "@/lib/format-price";
 import { BookOpen } from "lucide-react";
 import Image from "next/image";
