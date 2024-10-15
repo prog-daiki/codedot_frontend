@@ -1,5 +1,3 @@
-"use client";
-
 import { AdminCourseList } from "@/features/course/components/client/admin-course-list";
 import { CreateCourse } from "@/features/course/components/client/create-course";
 
