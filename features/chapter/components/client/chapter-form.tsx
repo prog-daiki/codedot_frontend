@@ -69,7 +69,7 @@ export const ChapterForm = ({ courseId }: ChapterFormProps) => {
   };
 
   return (
-    <div className="relative mt-6 rounded-md border p-4 shadow-md">
+    <div className="relative rounded-md border p-4 shadow-md">
       {isUpdating && (
         <div className="absolute right-0 top-0 flex size-full items-center justify-center rounded-md bg-slate-500/20">
           <Loader2 className="size-6 animate-spin text-sky-700" />
@@ -89,31 +89,43 @@ export const ChapterForm = ({ courseId }: ChapterFormProps) => {
         </Button>
       </div>
       {isCreating && (
-        <Form {...form}>
-          <form
-            className="mt-4 space-y-4"
-            onSubmit={form.handleSubmit(handleSubmit)}
+        <div>
+          <Form {...form}>
+            <form
+              className="mt-4 space-y-4"
+              onSubmit={form.handleSubmit(handleSubmit)}
+            >
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        className="w-full rounded-md focus-visible:ring-slate-200"
+                        disabled={reorderMutation.isPending}
+                        placeholder="ReactでTodoアプリを作ろう"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button disabled={createMutation.isPending}>登録</Button>
+            </form>
+          </Form>
+          <div
+            className={cn("text-sm mt-4", !chapters.length && "text-slate-500")}
           >
-            <FormField
-              control={form.control}
-              name="title"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      className="w-full rounded-md focus-visible:ring-slate-200"
-                      disabled={reorderMutation.isPending}
-                      placeholder="ReactでTodoアプリを作ろう"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+            {!chapters.length && "チャプターが未登録です"}
+            <ChapterList
+              items={chapters}
+              handleEdit={handleEdit}
+              handleReorder={handleReorder}
             />
-            <Button disabled={createMutation.isPending}>登録</Button>
-          </form>
-        </Form>
+          </div>
+        </div>
       )}
       {!isCreating && (
         <div
