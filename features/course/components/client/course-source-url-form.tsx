@@ -64,7 +64,13 @@ export const CourseSourceUrlForm = ({
           )}
         </Button>
       </div>
-      {!isEditing && <p className="mt-2 text-sm">{defaultValues?.sourceUrl}</p>}
+      {!isEditing && (
+        <p
+          className={`mt-2 text-sm ${!defaultValues?.sourceUrl ? "text-muted-foreground" : ""}`}
+        >
+          {defaultValues?.sourceUrl || "ソースコードが未登録です"}
+        </p>
+      )}
       {isEditing && (
         <Form {...form}>
           <form
