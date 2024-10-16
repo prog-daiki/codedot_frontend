@@ -68,7 +68,9 @@ export const CourseDescriptionForm = ({
         </Button>
       </div>
       {!isEditing && (
-        <p className="mt-2 text-sm">{defaultValues?.description}</p>
+        <p className="mt-2 text-sm text-muted-foreground">
+          {defaultValues?.description || "詳細が未登録です"}
+        </p>
       )}
       {isEditing && (
         <Form {...form}>
