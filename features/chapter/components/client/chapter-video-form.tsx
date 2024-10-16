@@ -48,9 +48,9 @@ export const ChapterVideoForm = ({
   };
 
   return (
-    <div className="mt-4 rounded-md border bg-slate-100 p-4">
-      <div className="flex items-center justify-between font-medium">
-        動画
+    <div className="mt-4 rounded-md border p-4 shadow-md">
+      <div className="flex items-center justify-between font-medium mb-2">
+        <h3 className="border-b border-sky-500 font-semibold">動画</h3>
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing && <>取り消す</>}
           {!isEditing && !chapter.videoUrl && (
