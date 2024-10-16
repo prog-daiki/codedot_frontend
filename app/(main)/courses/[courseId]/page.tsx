@@ -8,6 +8,7 @@ import MuxPlayer from "@mux/mux-player-react";
 import { ArrowLeft, BookOpen, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { Chapter } from "./_components/chapter";
+import { FaGithub } from "react-icons/fa";
 
 const CoursePage = ({ params }: { params: { courseId: string } }) => {
   const { courseId } = params;
@@ -68,9 +69,12 @@ const CoursePage = ({ params }: { params: { courseId: string } }) => {
             </p>
           </div>
           <div className="flex gap-4">
-            <Button variant="outline" className="">
-              Source Code
-            </Button>
+            <Link href={course?.sourceUrl!} target="_blank">
+              <Button variant="outline" className="gap-2">
+                <FaGithub className="size-4" />
+                Source Code
+              </Button>
+            </Link>
             <Button>購入する</Button>
           </div>
         </div>

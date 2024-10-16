@@ -19,10 +19,15 @@ import { useGetChapters } from "@/features/chapter/api/use-get-chapters";
 
 const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
   const { courseId } = params;
-  const { data: course, isLoading, isError } = useGetCourse(courseId);
-  const { data: chapters = [] } = useGetChapters(courseId);
+  const {
+    data: course,
+    isLoading: courseLoading,
+    isError,
+  } = useGetCourse(courseId);
+  const { data: chapters = [], isLoading: chaptersLoading } =
+    useGetChapters(courseId);
 
-  if (isLoading) {
+  if (courseLoading || chaptersLoading) {
     return (
       <div className="w-full min-h-screen flex items-center justify-center bg-white pb-60">
         <Loader2 className="size-12 animate-spin" />
@@ -106,7 +111,7 @@ const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
           </div>
           <div className="space-y-6">
             <div>
-              <div className="flex items-center gap-x-2">
+              <div className="flex items-center gap-x-2 mb-4">
                 <IconBadge icon={ListChecks} />
                 <h2 className="text-xl font-semibold">チャプター</h2>
               </div>
