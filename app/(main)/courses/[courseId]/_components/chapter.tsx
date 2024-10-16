@@ -1,8 +1,7 @@
 "use client";
 
 import { IconBadge } from "@/app/_components/common/icon-badge";
-import { cn } from "@/lib/utils";
-import { PlayCircle } from "lucide-react";
+import { Lock, PlayCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 type ChapterProps = {
@@ -27,14 +26,11 @@ export const Chapter = ({
   return (
     <button
       onClick={handleClick}
-      className={cn(
-        "text-lg border p-4 w-full",
-        purchased ? "" : "bg-gray-100",
-      )}
+      className="text-lg border p-4 w-full"
       disabled={!purchased}
     >
       <div className="flex gap-x-4 items-center">
-        <IconBadge icon={PlayCircle} size="md" />
+        <IconBadge icon={purchased ? PlayCircle : Lock} size="md" />
         <div className=" text-left">
           <p className="font-semibold">{chapterTitle}</p>
           <p className="text-muted-foreground text-sm">{chapterDescription}</p>
