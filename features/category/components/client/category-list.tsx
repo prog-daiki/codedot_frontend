@@ -1,9 +1,9 @@
 "use client";
 
-import { useGetCategories } from "../api/use-get-categories";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CategoryItem } from "./category-item";
 import { useSearchParams } from "next/navigation";
+import { useGetCategories } from "../../api/use-get-categories";
 
 const SKELETON_COUNT = 10;
 
