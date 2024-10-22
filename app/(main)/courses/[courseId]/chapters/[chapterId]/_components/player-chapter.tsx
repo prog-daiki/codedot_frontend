@@ -5,21 +5,21 @@ import { cn } from "@/lib/utils";
 import { Lock, PlayCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-type ChapterProps = {
+type PlayerChapterProps = {
   purchased: boolean;
   chapterTitle: string;
-  chapterDescription?: string;
   courseId: string;
   chapterId: string;
+  isCurrentChapter: boolean;
 };
 
-export const Chapter = ({
+export const PlayerChapter = ({
   purchased,
   chapterTitle,
-  chapterDescription,
   courseId,
   chapterId,
-}: ChapterProps) => {
+  isCurrentChapter,
+}: PlayerChapterProps) => {
   const router = useRouter();
   const handleClick = () => {
     router.push(`/courses/${courseId}/chapters/${chapterId}`);
@@ -28,8 +28,8 @@ export const Chapter = ({
     <button
       onClick={handleClick}
       className={cn(
-        "text-lg border p-4 w-full hover:bg-slate-100 transition",
-        !purchased && "bg-slate-100 cursor-not-allowed",
+        "text-lg p-4 w-full hover:bg-slate-100 transition border border-gray-100/80",
+        isCurrentChapter && "bg-slate-100",
       )}
       disabled={!purchased}
     >
@@ -37,7 +37,6 @@ export const Chapter = ({
         <IconBadge icon={purchased ? PlayCircle : Lock} size="md" />
         <div className=" text-left">
           <p className="font-semibold">{chapterTitle}</p>
-          <p className="text-muted-foreground text-sm">{chapterDescription}</p>
         </div>
       </div>
     </button>

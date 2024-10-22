@@ -9,6 +9,8 @@ import { ArrowLeft, BookOpen, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { Chapter } from "./_components/chapter";
 import { FaGithub } from "react-icons/fa";
+import { usePurchaseCourse } from "@/features/course/api/use-purchase-course";
+import { useRouter } from "next/navigation";
 
 const CoursePage = ({ params }: { params: { courseId: string } }) => {
   const { courseId } = params;
@@ -19,6 +21,9 @@ const CoursePage = ({ params }: { params: { courseId: string } }) => {
   } = useGetPublishCourse({
     courseId,
   });
+  const { mutate: purchaseCourse } = usePurchaseCourse(courseId);
+  const router = useRouter();
+
   const course = publishCourse?.course;
   const chapters = publishCourse?.chapters;
   const category = publishCourse?.category;
@@ -32,6 +37,10 @@ const CoursePage = ({ params }: { params: { courseId: string } }) => {
       </div>
     );
   }
+
+  const handleStudy = () => {
+    router.push(`/courses/${courseId}/chapters/${chapters![0].id}`);
+  };
 
   return (
     <div className="mt-4">
@@ -75,16 +84,23 @@ const CoursePage = ({ params }: { params: { courseId: string } }) => {
                 Source Code
               </Button>
             </Link>
-            <Button>購入する</Button>
+            {purchased ? (
+              <Button onClick={handleStudy}>学習する</Button>
+            ) : (
+              <Button onClick={() => purchaseCourse()} className="">
+                購入する
+              </Button>
+            )}
           </div>
         </div>
         <div className="relative aspect-video col-span-3 px-6 space-y-4">
           <MuxPlayer
             playbackId={chapters![0].muxData?.playbackId!}
             className="shadow-md"
+            autoPlay
           />
           <div className="shadow-sm">
-            <div className="bg-gray-900 text-white p-4 rounded-t-md">
+            <div className="bg-slate-600 p-4 rounded-t-md text-white">
               <h3 className="text-xl font-bold">Chapter</h3>
             </div>
             <ul>
