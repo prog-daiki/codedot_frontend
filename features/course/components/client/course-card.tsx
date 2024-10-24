@@ -49,8 +49,8 @@ export const CourseCard = ({
               </span>
             </div>
           </div>
-          <p className="text-md font-semibold text-slate-700 md:text-sm">
-            {purchased ? "購入済み" : formatPrice(price)}
+          <p className="text-md font-semibold text-slate-700 md:text-sm mt-1">
+            {purchased ? "購入済み" : price === 0 ? "無料" : formatPrice(price)}
           </p>
         </div>
       </div>
