@@ -45,7 +45,7 @@ const AdminCoursePage = ({ params }: { params: { courseId: string } }) => {
     course.title,
     course.description,
     course.imageUrl,
-    course.price,
+    course.price !== undefined,
     course.categoryId,
     course.sourceUrl,
     publishedChapters.length,
